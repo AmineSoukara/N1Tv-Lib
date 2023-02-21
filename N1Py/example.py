@@ -1,17 +1,5 @@
-import re
-import threading
-import traceback
-from pathlib import PurePosixPath
-from urllib.parse import quote, unquote, urlparse
-
-import humanize
-import markdown
-import requests
 import urllib3
 from bs4 import BeautifulSoup
-from dotmap import DotMap
-from strsimpy.ngram import NGram
-
 from requests import Session, get
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -19,7 +7,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Example:
     def __init__(self, base_url="https://example.com"):
-
         self.USER_AGENT = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36"
         }
@@ -113,46 +100,45 @@ class Example:
         includeEpisodes=False,
     ):
         a = {
-                            "type": "",
-                            "id": "",
-                            "title": "",
-                            "quality": "",
-                            "genres": [],
-                            "url": "",
-                            "rating": "",
-                            "img": "",
-                            
-                        }
+            "type": "",
+            "id": "",
+            "title": "",
+            "quality": "",
+            "genres": [],
+            "url": "",
+            "rating": "",
+            "img": "",
+        }
         return [a]
 
     def get_episodes(self, url, order=True):
         data = {
-                    "link": link,
-                    "img": img,
-                    "title": title,
-                    "id": id,
-                }
+            "link": link,
+            "img": img,
+            "title": title,
+            "id": id,
+        }
 
         return [data]
 
     def dl(self, link):
         a = {
-                "quality": "",
-                "resolution": "",
-                "url": "",
-                "type": "",
-                "origin_name": "",
-                "file_name": "",
-                "name": "",
-                "size": {"humanbytes": "", "bytes": ""},
-            }
+            "quality": "",
+            "resolution": "",
+            "url": "",
+            "type": "",
+            "origin_name": "",
+            "file_name": "",
+            "name": "",
+            "size": {"humanbytes": "", "bytes": ""},
+        }
         return [a]
 
     def info(self, url):
         done = {}
         return done
 
-    def get_title(self, url, soup=None:
+    def get_title(self, url, soup=None):
         if not soup:
             soup = self.soup(url)
 
@@ -164,13 +150,12 @@ class Example:
             soup = self.soup(url)
 
         data = {
-                "title": "",
-                "link": "",
-                "id": "",
-            }
+            "title": "",
+            "link": "",
+            "id": "",
+        }
 
         return [data]
-
 
     def get_image(self, url, soup=None):
         if not soup:
@@ -183,7 +168,7 @@ class Example:
         if not soup:
             soup = self.soup(url)
         type = ""
-        return  type
+        return type
 
     def get_last_page_number(self, url, soup=None):
         if not soup:
