@@ -1,2 +1,1 @@
-# N1Tv-Lib
-N1Tv Libraries
+# N1Tv-Lib For [@N1TvBot](https://t.me/N1TvBot)
