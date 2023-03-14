@@ -7,7 +7,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Example:
     def __init__(self, base_url="https://example.com"):
-        self.Headers = {"User-Agent": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"}
+        self.Headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+        }
         self.Session = Session
         url = get(base_url, headers=self.Headers).url
         self.url = [url, url[:-1]][url[-1] == "/"]
@@ -83,7 +85,6 @@ class Example:
             "img": "",
         }
         return [a]
-
 
     def dl(self, link):
         a = {
